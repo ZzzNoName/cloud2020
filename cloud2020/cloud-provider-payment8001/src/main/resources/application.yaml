@@ -9,9 +9,13 @@ spring:
     url: jdbc:mysql://192.168.226.128:3306/db2019?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: root
-
 mybatis:
   mapperLocations: classpath:mapper/*.xml
   type-aliases-package: com.atguigu.springcloud.entities
 
-
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka
