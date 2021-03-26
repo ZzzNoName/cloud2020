@@ -11,8 +11,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class OrderZK80 {
+public class OrderZKMain80 {
     public static void main(String[] args) {
-        SpringApplication.run(OrderZK80.class,args);
+        SpringApplication.run(OrderZKMain80.class,args);
     }
 }
