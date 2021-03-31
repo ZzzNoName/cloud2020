@@ -29,6 +29,7 @@ public class PaymentController {
     @GetMapping("/payment/hystrix/ok/{id}")
     public String paymentInfo_OK(@PathVariable("id") Integer id)
     {
+//        System.out.println(1/0); 未找到对应的@HystrixProperty 捕获
         String result = paymentService.paymentInfo_OK(id);
         log.info("****result: "+result);
         return result;

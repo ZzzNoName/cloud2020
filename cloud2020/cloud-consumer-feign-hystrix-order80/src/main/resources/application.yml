@@ -9,6 +9,7 @@ eureka:
 spring:
   application:
     name: hystrix-cloud-order-service
+# 用于服务降级 在注解@FeignClient中添加fallbackFactory属性值
 feign:
   hystrix:
     enabled: true
