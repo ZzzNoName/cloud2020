@@ -3,6 +3,7 @@ package com.atguigu.springcloud.controller;
 import com.atguigu.springcloud.service.PaymentService;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Slf4j
-@DefaultProperties(defaultFallback = "payment_Global_FallbackMethod")
+//@DefaultProperties(defaultFallback = "payment_Global_FallbackMethod")
 public class PaymentController {
     @Autowired
     private PaymentService paymentService;
@@ -29,7 +30,7 @@ public class PaymentController {
     @GetMapping("/payment/hystrix/ok/{id}")
     public String paymentInfo_OK(@PathVariable("id") Integer id)
     {
-//        System.out.println(1/0); 未找到对应的@HystrixProperty 捕获
+
         String result = paymentService.paymentInfo_OK(id);
         log.info("****result: "+result);
         return result;
@@ -38,6 +39,8 @@ public class PaymentController {
     @GetMapping("/payment/hystrix/timeout/{id}")
     public String paymentInfo_TimeOut(@PathVariable("id") Integer id) throws InterruptedException
     {
+//        未找到对应的@HystrixProperty 捕获
+        int age = 10/0;
         String result = paymentService.paymentInfo_TimeOut(id);
         log.info("****result: "+result);
         return result;
