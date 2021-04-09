@@ -50,4 +50,12 @@ public class PaymentController {
     {
         return "Global异常处理信息，请稍后再试，/(ㄒoㄒ)/~~";
     }
+
+    @GetMapping("/payment/circuit/{id}")
+    public String paymentCircuitBreaker(@PathVariable("id") Integer id)
+    {
+        String result = paymentService.paymentCircuitBreaker(id);
+        log.info("****result: "+result);
+        return result;
+    }
 }
