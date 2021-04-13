@@ -27,7 +27,7 @@ public class OrderController {
     //单机版
 //    public static final String PAYMENT_URL = "http://localhost:8001";
     //微服务版  cloud-payment-service 微服务名称
-    public static final String PAYMENT_URL = "http://cloud-payment-service";
+    public static final String PAYMENT_URL = "http://CLOUD-PAYMENT-SERVICE";
     @Resource
     private RestTemplate restTemplate;
     @Resource
@@ -69,5 +69,13 @@ public class OrderController {
         URI uri = serviceInstance.getUri();
 
         return restTemplate.getForObject(uri+"/payment/lb",String.class);
+    }
+
+    // ====================> zipkin+sleuth
+    @GetMapping("/consumer/payment/zipkin")
+    public String paymentZipkin()
+    {
+        String result = restTemplate.getForObject(PAYMENT_URL+"/payment/zipkin/", String.class);
+        return result;
     }
 }
