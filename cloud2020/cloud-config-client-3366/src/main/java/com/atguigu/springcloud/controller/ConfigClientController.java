@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Auther: garrick
- * @Date: 2021/4/12 17:19
+ * @Date: 2021/4/13 10:15
  * @Description:
  */
 @RestController
@@ -20,7 +20,7 @@ public class ConfigClientController {
     private String configInfo;
 
     @GetMapping("/configInfo")
-    public String getConfigInfo()
+    public String configInfo()
     {
         return "serverPort: "+serverPort+"\t\n\n configInfo: "+configInfo;
     }
