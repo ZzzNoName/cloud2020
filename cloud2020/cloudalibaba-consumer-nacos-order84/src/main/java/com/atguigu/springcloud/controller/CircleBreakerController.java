@@ -29,7 +29,7 @@ public class CircleBreakerController {
 //    @SentinelResource(value = "fallback",fallback = "handlerFallback")
     //blockHandler负责在sentinel里面配置的降级限流
 //    @SentinelResource(value = "fallback",blockHandler = "blockHandler")
-    @SentinelResource(value = "fallback",fallback = "handlerFallback",blockHandler = "blockHandler")
+    @SentinelResource(value = "fallback",fallback = "handlerFallback",blockHandler = "blockHandler",exceptionsToIgnore = {IllegalArgumentException.class})
     public CommonResult<Payment> fallback(@PathVariable Long id) {
         CommonResult<Payment> result = restTemplate.getForObject(SERVICE_URL + "/paymentSQL/" + id, CommonResult.class, id);
 
